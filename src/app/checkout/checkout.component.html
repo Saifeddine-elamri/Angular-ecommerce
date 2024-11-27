@@ -1,0 +1,26 @@
+<div class="checkout">
+  <h2>Récapitulatif de la commande</h2>
+
+  <!-- Récapitulatif des articles du panier -->
+  <ul>
+    <li *ngFor="let item of getCartItems()">
+      {{ item.name }} - {{ item.quantity }} x {{ item.price  }}
+    </li>
+  </ul>
+
+  <p><strong>Total :</strong> {{ getTotal()  }}</p>
+
+  <h3>Informations de contact</h3>
+  <form (ngSubmit)="validateOrder()">
+    <div>
+      <label for="name">Nom :</label>
+      <input id="name" type="text"  name="name" required />
+    </div>
+    <div>
+      <label for="email">Email :</label>
+      <input id="email" type="email"  name="email" required />
+    </div>
+
+    <button type="submit" [disabled]="!name || !email">Valider la commande</button>
+  </form>
+</div>

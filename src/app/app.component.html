@@ -1,11 +1,9 @@
-<div class="app">
-  <nav>
-    <ul>
-      <li><a routerLink="/">Accueil</a></li>
-      <li><a routerLink="/menu">Menu</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
-    </ul>
-  </nav>
 
-  <router-outlet></router-outlet>
+<app-header></app-header>  <!-- Ajout du Footer -->
+
+<app-navbar></app-navbar> <!-- Ajout du composant Navbar -->
+
+<div class="app">
+  <router-outlet></router-outlet> <!-- Les composants de page s'afficheront ici -->
 </div>
+<app-footer></app-footer>  <!-- Ajout du Footer -->

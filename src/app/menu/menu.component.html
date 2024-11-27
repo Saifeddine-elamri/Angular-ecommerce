@@ -1,9 +1,39 @@
 <div class="menu">
-  <h1>Notre Menu</h1>
-  <ul>
-    <li>Pizza Margherita - 10€</li>
-    <li>Pasta Bolognese - 12€</li>
-    <li>Salade César - 8€</li>
-    <li>Steak Frites - 15€</li>
-  </ul>
+  <h2>Menu</h2>
+  
+  <!-- Affichage des produits du menu -->
+  <div *ngFor="let product of products" class="menu-item">
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.price }}</p>
+    <button (click)="addToCart(product)">Ajouter au panier</button>
+  </div>
+
+  <!-- Icône du panier avec le nombre d'articles -->
+  <div class="cart-icon" (click)="toggleCart()">
+    <img src="assets/cart-icon.png" alt="Panier" />
+    <span *ngIf="getCartItems().length > 0" class="cart-count">
+      {{ getCartItems().length }}
+    </span>
+  </div>
+
+  <!-- Affichage du panier si visible -->
+  <div *ngIf="isCartVisible" class="cart-summary">
+    <h3>Votre Panier</h3>
+    <ul>
+      <li *ngFor="let item of getCartItems()">
+        {{ item.name }} - {{ item.quantity }} x {{ item.price  }}
+        <button (click)="removeFromCart(item.id)">Retirer</button>
+      </li>
+    </ul>
+    <p><strong>Total :</strong> {{ getTotal()  }}</p>
+    <button (click)="clearCart()">Vider le panier</button>
+
+    <!-- Bouton pour valider la commande -->
+    <button *ngIf="getCartItems().length > 0" [routerLink]="['/checkout']">Valider la commande</button>
+  </div>
+
+  <!-- Message si le panier est vide -->
+  <div *ngIf="getCartItems().length === 0 && isCartVisible">
+    <p>Votre panier est vide. Ajoutez des articles pour les voir ici.</p>
+  </div>
 </div>
