@@ -1,0 +1,79 @@
+/* Style général du formulaire de contact */
+.contact {
+  background-color: #f9f9f9;
+  padding: 50px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Titre de la page de contact */
+.contact h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Conteneur du formulaire */
+.contact-form {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Champs de saisie */
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color: #4CAF50;
+}
+
+/* Bouton d'envoi */
+.contact-form button {
+  padding: 15px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+/* Section de contact info */
+.contact-info {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.contact-info div {
+  margin: 0 20px;
+  text-align: center;
+}
+
+.contact-info i {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  color: #333;
+}

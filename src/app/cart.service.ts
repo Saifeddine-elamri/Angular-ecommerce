@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
 
+
+export interface CartItem {
+  name: string;
+  price: number;
+  quantity: number;
+}
+
+
 @Injectable({
   providedIn: 'root'  // Ce service est disponible globalement
 })
 export class CartService {
 
   private cartItems: any[] = [];  // Le tableau des éléments dans le panier
+  private items: CartItem[] = [];  // Tableau pour stocker les articles du panier
 
   constructor() { }
 
@@ -38,4 +47,13 @@ export class CartService {
   clearCart() {
     this.cartItems = [];
   }
+
+  // Calculer le total du panier
+  calculateTotal(): number {
+    return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+}
+
+
+
 }

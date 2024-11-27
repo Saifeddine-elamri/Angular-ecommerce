@@ -1,6 +1,36 @@
 <div class="home">
-  <h1>Bienvenue au Restaurant !</h1>
-  <p>Venez découvrir nos plats délicieux et notre ambiance chaleureuse.</p>
-  <a routerLink="/menu">Voir notre menu</a>
-  <a routerLink="/contact">Contactez-nous</a>
+  <!-- Section Header (image de fond avec texte) -->
+  <div class="header">
+    <h1>Bienvenue dans notre Restaurant</h1>
+    <p>Des plats délicieux et une ambiance chaleureuse vous attendent !</p>
+    <button class="btn" [routerLink]="['/menu']">Voir le Menu</button>
+  </div>
+
+  <!-- Section 'À propos' -->
+  <div class="about">
+    <h2>À propos de nous</h2>
+    <p>Nous sommes un restaurant passionné par la cuisine de qualité, offrant des repas faits maison dans une atmosphère agréable. Découvrez nos plats délicieux et profitez d'une expérience unique.</p>
+    <img src="assets/restaurant-interior.jpg" alt="Restaurant intérieur" />
+  </div>
+
+  <!-- Section des services -->
+  <div class="services">
+    <div class="service">
+      <h3>Menu varié</h3>
+      <p>Un large choix de plats pour tous les goûts. Que vous soyez végétarien, amateur de viande ou de fruits de mer, nous avons ce qu'il vous faut.</p>
+    </div>
+    <div class="service">
+      <h3>Ambiance chaleureuse</h3>
+      <p>Venez passer un moment agréable dans notre restaurant. Que ce soit pour un déjeuner rapide ou un dîner romantique, notre équipe se fera un plaisir de vous accueillir.</p>
+    </div>
+    <div class="service">
+      <h3>Service à emporter</h3>
+      <p>Pas le temps de manger sur place ? Nous proposons également un service à emporter pour que vous puissiez savourer nos plats où vous le souhaitez.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; 2024 Restaurant XYZ. Tous droits réservés.</p>
+  </div>
 </div>

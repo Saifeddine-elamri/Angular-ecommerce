@@ -1,25 +1,113 @@
-.menu {
-  padding: 20px;
+/* Style global */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
 
+/* Conteneur principal du menu */
+.menu {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du menu */
+.menu h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Grille de produits */
 .menu-item {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+  width: calc(33% - 20px);
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
   margin-bottom: 15px;
 }
 
-/* Style pour l'icône du panier */
+.menu-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.menu-item p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.menu-item button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item button:hover {
+  background-color: #45a049;
+}
+
+/* Conteneur pour afficher les produits sous forme de grille */
+.menu-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
+}
+
+/* Panier flottant */
 .cart-icon {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #4CAF50;
-  padding: 10px;
+  padding: 15px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.cart-icon:hover {
+  background-color: #45a049;
 }
 
 .cart-icon img {
@@ -31,46 +119,73 @@
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: red;
+  background-color: #ff4f4f;
   color: white;
   font-size: 12px;
+  font-weight: bold;
   border-radius: 50%;
   padding: 5px;
 }
 
-/* Style pour le panier */
+/* Affichage du panier */
 .cart-summary {
   position: fixed;
-  top: 70px;
+  top: 80px;
   right: 20px;
-  width: 300px;
-  background-color: #f8f8f8;
+  width: 350px;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Liste des produits dans le panier */
-ul {
+.cart-summary h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.cart-summary ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
-li {
+.cart-summary li {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-button {
-  padding: 5px 10px;
+.cart-summary p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.cart-summary button {
   background-color: #ff4f4f;
-  color: white;
   border: none;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+.cart-summary button:hover {
   background-color: #e03e3e;
+}
+
+.cart-summary .clear-cart-btn {
+  margin-top: 15px;
+  background-color: #777;
+  border: none;
+}
+
+.cart-summary .clear-cart-btn:hover {
+  background-color: #555;
 }
