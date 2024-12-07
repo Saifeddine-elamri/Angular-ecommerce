@@ -2,11 +2,17 @@
   <h2>Menu</h2>
   
   <!-- Affichage des produits du menu -->
-  <div *ngFor="let product of products" class="menu-item">
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.price }}</p>
-    <button (click)="addToCart(product)">Ajouter au panier</button>
+<div *ngFor="let product of products" class="menu-item">
+  <div class="product-image-container">
+    <img  alt="{{ product.name }}" class="product-image">
   </div>
+  <div class="product-info">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-price">{{ product.price | currency:'EUR' }}</p>
+    <button (click)="addToCart(product)" class="add-to-cart-btn">Ajouter au panier</button>
+  </div>
+</div>
+
 
   <!-- Icône du panier avec le nombre d'articles -->
   <div class="cart-icon" (click)="toggleCart()">
