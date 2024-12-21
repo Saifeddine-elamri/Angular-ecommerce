@@ -16,10 +16,10 @@ export class MenuComponent implements OnInit {
 
   // Exemple de produits dans le menu
   products = [
-    { id: 1, name: 'Pizza Margherita', price: 10 },
-    { id: 2, name: 'Pizza Pepperoni', price: 12 },
-    { id: 3, name: 'Pasta Carbonara', price: 15 },
-    { id: 4, name: 'Salad Caesar', price: 8 }
+    { id: 1, name: 'Pizza Margherita', price: 10 , image : './Margherita.png'},
+    { id: 2, name: 'Pizza Pepperoni', price: 12 ,image : '/Pepperoni.png'},
+    { id: 3, name: 'Pasta Carbonara', price: 15 , image : '/Pasta.png'},
+    { id: 4, name: 'Salad Caesar', price: 8 ,image : '/Salad.png'}
   ];
 
   // Variable pour gérer l'affichage du panier

@@ -40,6 +40,7 @@ export class CartService {
 
   // Obtenir le total du panier
   getTotal() {
+
     return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   }
 
