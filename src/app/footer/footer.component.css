@@ -1,4 +1,11 @@
 footer {
+
+ 
+  padding: 10px 0;
+  width: 100%;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Place le footer au bas si la page est plus petite */
+
   background-color: #333;
   color: white;
   text-align: center;
@@ -10,4 +17,5 @@ footer {
 
 footer p {
   margin: 0;
+  
 }

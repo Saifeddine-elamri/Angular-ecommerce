@@ -3,32 +3,43 @@
     <h2>Récapitulatif de la commande</h2>
 
     <!-- Récapitulatif de la commande -->
-    <div class="order-summary">
-      <h3>Articles dans votre panier</h3>
-      <ul>
-        <li *ngFor="let item of cartItems">
-          {{ item.name }} x{{ item.quantity }} - {{ item.price  }}
-        </li>
-      </ul>
-      <p>Total :</p>
-      <p>{{ totalPrice }}</p>
-    </div>
+	<div class="order-summary">
+	  <h3>Articles dans votre panier</h3>
+	  <ul class="order-items-list">
+		<li *ngFor="let item of cartItems" class="order-item">
+		  <div class="item-image">
+			<img [src]="item.image" alt="{{ item.name }}" />
+		  </div>
+		  <div class="item-details">
+			<div class="item-name">
+			  <strong>{{ item.name }}</strong>
+			</div>
+			<div class="item-quantity">
+			  <span>{{ item.quantity }} x</span>
+			  <span>{{ item.price }} €</span>
+			</div>
+			<div class="item-total">
+			  <span>{{ item.price * item.quantity }} €</span>
+			</div>
+		  </div>
+		</li>
+	  </ul>
+	  <div class="order-total">
+		<strong>Total : {{ total }} €</strong>
+	  </div>
+	</div>
+
+
 
     <!-- Formulaire de validation de la commande -->
     <div class="order-form">
       <h3>Informations de livraison</h3>
-      <form>
-        <input type="text" placeholder="Nom"  name="name" required />
-        <input type="email" placeholder="Email"  name="email" required />
-        <input type="text" placeholder="Adresse"  name="address" required />
-        <button type="submit">Confirmer la commande </button>  
+      <form (ngSubmit)="submitOrder()">
+        <input type="text" placeholder="Nom" name="name" required class="input-field"/>
+        <input type="email" placeholder="Email" name="email" required class="input-field"/>
+        <input type="text" placeholder="Adresse" name="address" required class="input-field"/>
+        <button type="submit" class="submit-btn">Confirmer la commande</button>
       </form>
     </div>
-
-    <!-- Section du total -->
-    <div class="total">
-      <p>Total de la commande : <strong>{{ totalPrice }}</strong></p>
-    </div>
-	
   </div>
 </div>

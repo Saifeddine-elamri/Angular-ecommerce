@@ -10,6 +10,11 @@
   justify-content: space-evenly;  /* Répartir les éléments uniformément */
   gap: 20px;  /* Espacement entre les éléments */
   max-width: 1200px;  /* Limite la largeur du menu */
+  padding-bottom: 100px;
+  margin-bottom: 10 px;  
+  min-height: calc(100vh - 150px); /* Assure que le menu occupe une bonne partie de l'écran */
+
+
 }
 
 /* Titre du menu */
@@ -144,6 +149,7 @@
   border-radius: 50%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+
 }
 
 .cart-icon:hover {

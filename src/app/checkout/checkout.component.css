@@ -1,140 +1,239 @@
-/* Style global de la page checkout */
+/* Style général de la page de checkout */
 .checkout {
+  background-color: #f8f8f8;
+  padding: 40px 20px;
   font-family: 'Arial', sans-serif;
-  background-color: #f4f6f9;
-  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
 }
 
 /* Conteneur principal */
 .checkout-container {
   background-color: #fff;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
 }
 
-.checkout-container:hover {
-  transform: translateY(-5px); /* Légère élévation lors du survol */
-}
-
-/* Titre de la page checkout */
-.checkout h2 {
-  font-size: 2.8rem;
-  margin-bottom: 40px;
-  color: #333;
+/* Titre principal */
+.checkout-container h2 {
   text-align: center;
-  font-weight: 600;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Section récapitulative des articles */
+/* Section récapitulatif de la commande */
+.order-summary {
+  margin-bottom: 30px;
+}
+
+/* Titre de la section */
+.order-summary h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 /* Section récapitulatif de la commande */
 .order-summary {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Titre de la section */
 .order-summary h3 {
-  font-size: 2rem;
+  font-size: 1.7em;
   color: #333;
-  margin-bottom: 15px;
-  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.order-summary ul {
-  list-style: none;
+/* Liste des articles dans le panier */
+.order-items-list {
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.order-summary li {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.1rem;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.order-summary li:last-child {
-  border-bottom: none;
-}
-
-.order-summary p {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #444;
-  margin-top: 10px;
-  text-align: right;
-}
-
-/* Formulaire de validation de commande */
-.order-form {
-  background-color: #fafafa;
-  padding: 25px;
+.order-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
   border-radius: 8px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.order-form input,
-.order-form textarea {
+.order-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Image du produit */
+.item-image {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-image img {
   width: 100%;
-  padding: 14px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.order-form input:focus,
-.order-form textarea:focus {
-  border-color: #6c63ff;
+/* Détails de l'article */
+.item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.item-name {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.item-quantity {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.item-total {
+  font-size: 1.2em;
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* Total de la commande */
+.order-total {
+  text-align: right;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+  margin-top: 20px;
+  border-top: 2px solid #eee;
+  padding-top: 10px;
+}
+
+/* Responsivité pour les petits écrans */
+@media (max-width: 768px) {
+  .order-summary {
+    padding: 15px;
+  }
+
+  .order-items-list {
+    margin-top: 10px;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-details {
+    align-items: flex-start;
+  }
+
+  .item-name {
+    font-size: 1.1em;
+  }
+
+  .item-quantity, .item-total {
+    font-size: 1em;
+  }
+
+  .order-total {
+    font-size: 1.3em;
+    text-align: center;
+  }
+}
+
+
+/* Formulaire */
+.order-form h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #28a745;
   outline: none;
 }
 
-.order-form button {
-  width: 100%;
-  padding: 16px;
-  background-color: #6c63ff;
+/* Bouton de soumission */
+.submit-btn {
+  background-color: #28a745;
   color: white;
   border: none;
-  font-size: 1.2rem;
-  border-radius: 6px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  width: 100%;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 15px;
 }
 
-.order-form button:hover {
-  background-color: #5a53d1;
+.submit-btn:hover {
+  background-color: #218838;
 }
 
-.order-form .cancel-btn {
-  background-color: #ccc;
-  margin-top: 10px;
-}
-
-.order-form .cancel-btn:hover {
-  background-color: #999;
-}
-
-.order-form .cancel-btn:focus {
+.submit-btn:focus {
   outline: none;
 }
 
-/* Section totale de la commande */
-.total {
-  font-size: 1.3rem;
-  margin-top: 30px;
-  text-align: right;
-  padding: 10px 0;
-}
+/* Responsivité */
+@media (max-width: 768px) {
+  .checkout-container {
+    padding: 20px;
+    width: 100%;
+    margin: 0;
+  }
 
-.total p {
-  font-weight: 600;
-  font-size: 1.6rem;
-  color: #333;
-  border-top: 2px solid #eee;
-  padding-top: 20px;
+  .checkout-container h2 {
+    font-size: 1.6em;
+  }
+
+  .order-item {
+    font-size: 1em;
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
 }

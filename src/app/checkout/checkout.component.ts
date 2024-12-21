@@ -1,79 +1,73 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
-// import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { OrderService } from '../order.service'; // Importer le service de commande
-import { Observable } from 'rxjs';
-
-interface CartItem {
-  name: string;        // Nom de l'article
-  price: number;       // Prix de l'article
-  quantity: number;    // Quantité de l'article
-}
+import { CartService, CartItem } from '../cart.service';
+import {CommonModule} from '@angular/common';
+import { HttpClientModule } from '@angular/common/http'; // Importation du module HttpClient
+import { HttpClient } from '@angular/common/http';  // Importer HttpClient pour faire des requêtes HTTP
 
 @Component({
   selector: 'app-checkout',
-  standalone: true,
-  imports: [CommonModule],
+  standalone : true,
+  imports :[CommonModule ,HttpClientModule],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  
-  // Propriétés pour récupérer les informations de l'utilisateur
+
+  cartItems: CartItem[] = [];  // Stocke les articles du panier
+  total: number = 0;  // Total du panier
+
+  // Informations du client pour la commande
+  customerName: string = '';
+  customerEmail: string = '';
+  customerAddress: string = '';
+
+  constructor(private cartService: CartService, private http: HttpClient) {}
+
+  ngOnInit(): void {
+    // Récupérer les articles du panier au démarrage
+    this.cartItems = this.cartService.getCartItems();
+    this.calculateTotal();
+  }
+
+  // Calculer le total du panier
+  calculateTotal(): void {
+    this.total = this.cartService.getTotal();
+  }
+
+ // Déclaration des champs du formulaire
   name: string = '';
   email: string = '';
-  address: string = '';  // Ajout de l'adresse
-  cartItems: CartItem[] = [];  // Tableau d'objets CartItem
-  totalPrice: number = 0; 
+  address: string = '';
 
-  constructor(
-    private cartService: CartService, 
-  //  private router: Router,
-    private orderService: OrderService // Injecter le service de commande
-  ) { }
+  // L'URL de votre API pour soumettre la commande
+  private apiUrl = 'http://localhost:3004/api/checkout';  // Remplacez cette URL par votre API réelle
 
-  ngOnInit() {
-    // Récupérer les articles du panier et le total
-    this.cartItems = this.cartService.getCartItems();  // Appelez la méthode pour obtenir les articles du panier
-    this.totalPrice = this.cartService.calculateTotal(); // Appelez la méthode pour obtenir le total
-  }
 
-  // Méthode pour valider la commande
-/*  validateOrder() {
-    if (this.name && this.email && this.address) {
-      // Créer l'objet de la commande à envoyer au backend
-      const orderData = {
-        name: this.name,
-        email: this.email,
-        address: this.address,
-        items: this.cartItems,
-        total: this.totalPrice
-      };
+  // Méthode appelée lors de la soumission du formulaire
+  submitOrder(): void {
+    // Créer un objet avec les données du formulaire
+    const orderData = {
+      name: this.name,
+      email: this.email,
+      address: this.address
+    };
 
-      // Appeler le service pour envoyer la commande au backend
-      this.placeOrder(orderData).subscribe(
-        response => {
-          console.log("Commande validée", response);
-          // Réinitialiser le panier après validation
-          this.cartService.clearCart();
-          // Rediriger vers une page de confirmation ou de succès
-          this.router.navigate(['/confirmation']);  
-        },
-        error => {
-          console.error("Erreur lors de la validation de la commande", error);
-          alert('Une erreur est survenue lors de la validation de la commande.');
-        }
-      );
-    } else {
-      alert('Veuillez remplir tous les champs.');
-    }
-  }
-*/
-  // Méthode pour envoyer la commande via le service HTTP
- /* placeOrder(orderData: any): Observable<any> {
-    return this.orderService.createOrder(orderData);
+    // Appel de l'API avec une requête POST pour soumettre la commande
+    this.http.post(this.apiUrl, orderData).subscribe(
+      (response) => {
+        // Si la requête réussit, gérez la réponse
+        console.log('Commande réussie', response);
+        alert('Commande confirmée!');
+      },
+      (error) => {
+        // Si la requête échoue, gérez l'erreur
+        console.error('Erreur lors de la commande', error);
+        alert('Erreur lors de la commande. Essayez à nouveau.');
+      }
+    );
   }
   
-  */
-}
+  
+  
+  
+  }

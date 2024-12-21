@@ -1,0 +1,28 @@
+/* Global styles for the header */
+.header {
+  background-color: #f8f9fa; /* Soft background color */
+  padding: 20px 40px; /* Padding around the content */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-bottom: 2px solid #ccc; /* Bottom border for separation */
+}
+
+/* Styles for the logo */
+.logo {
+  font-family: 'Roboto', sans-serif; /* Clean and modern font */
+  text-align: center;
+}
+
+.logo h1 {
+  font-size: 2.5rem; /* Adjust font size for visibility */
+  font-weight: bold;
+  color: #333; /* Dark gray for text */
+  margin: 0; /* Remove default margin */
+}
+
+.logo h1:hover {
+  color: #d9534f; /* Change color on hover */
+  transition: color 0.3s ease; /* Smooth hover transition */
+}
