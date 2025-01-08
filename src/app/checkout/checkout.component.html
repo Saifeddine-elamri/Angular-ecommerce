@@ -1,45 +1,49 @@
 <div class="checkout">
-  <div class="checkout-container">
-    <h2>Récapitulatif de la commande</h2>
-
-    <!-- Récapitulatif de la commande -->
-	<div class="order-summary">
-	  <h3>Articles dans votre panier</h3>
-	  <ul class="order-items-list">
-		<li *ngFor="let item of cartItems" class="order-item">
-		  <div class="item-image">
-			<img [src]="item.image" alt="{{ item.name }}" />
-		  </div>
-		  <div class="item-details">
-			<div class="item-name">
-			  <strong>{{ item.name }}</strong>
+	<div class="checkout-container">
+	  <h2>Récapitulatif de la commande</h2>
+  
+	  <!-- Récapitulatif de la commande -->
+	  <div class="order-summary">
+		<h3>Articles dans votre panier</h3>
+		<ul class="order-items-list">
+		  <li *ngFor="let item of cartItems" class="order-item">
+			<div class="item-image">
+			  <img [src]="item.image" alt="{{ item.name }}" />
 			</div>
-			<div class="item-quantity">
-			  <span>{{ item.quantity }} x</span>
-			  <span>{{ item.price }} €</span>
+			<div class="item-details">
+			  <div class="item-name">
+				<strong>{{ item.name }}</strong>
+			  </div>
+			  <div class="item-quantity">
+				<span>{{ item.quantity }} x </span>
+				<span>{{ item.price }} €</span>
+			  </div>
+			  <div class="item-total">
+				<span>{{ item.price * item.quantity }} €</span>
+			  </div>
 			</div>
-			<div class="item-total">
-			  <span>{{ item.price * item.quantity }} €</span>
-			</div>
-		  </div>
-		</li>
-	  </ul>
-	  <div class="order-total">
-		<strong>Total : {{ total }} €</strong>
+		  </li>
+		</ul>
+		<div class="order-total">
+		  <strong>Total : {{ total }} €</strong>
+		</div>
+	  </div>
+  
+	  <!-- Formulaire de validation de la commande -->
+	  <div class="order-form">
+		<h3>Informations de livraison</h3>
+		<form (ngSubmit)="submitOrder()">
+		  <input type="text" placeholder="Nom" [(ngModel)]="name" name="name" required class="input-field" />
+		  <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required class="input-field" />
+		  <input type="text" placeholder="Adresse" [(ngModel)]="address" name="address" required class="input-field" />
+		  <button type="submit" class="submit-btn">Confirmer la commande</button>
+		</form>
+	  </div>
+  
+	  <!-- Affichage du message de confirmation ou d'erreur -->
+	  <div *ngIf="message" class="message" [ngClass]="{ 'success': message.includes('confirmée'), 'error': message.includes('Erreur') }">
+		{{ message }}
 	  </div>
 	</div>
-
-
-
-    <!-- Formulaire de validation de la commande -->
-    <div class="order-form">
-      <h3>Informations de livraison</h3>
-      <form (ngSubmit)="submitOrder()">
-        <input type="text" placeholder="Nom" name="name" required class="input-field"/>
-        <input type="email" placeholder="Email" name="email" required class="input-field"/>
-        <input type="text" placeholder="Adresse" name="address" required class="input-field"/>
-        <button type="submit" class="submit-btn">Confirmer la commande</button>
-      </form>
-    </div>
   </div>
-</div>
+  

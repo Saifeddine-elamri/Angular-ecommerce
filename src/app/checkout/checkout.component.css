@@ -124,7 +124,7 @@
   font-size: 1.2em;
   color: #28a745;
   font-weight: bold;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 /* Total de la commande */
@@ -236,4 +236,20 @@
     padding: 12px 20px;
     font-size: 1em;
   }
+}
+.message {
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.message {
+  background-color: #e0ffe0; /* couleur de fond pour succès */
+  color: green;
+}
+
+.message.error {
+  background-color: #ffe0e0; /* couleur de fond pour erreur */
+  color: red;
 }

@@ -72,7 +72,7 @@
 
 .about img {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: auto;
   margin: 0 auto;
   display: block;
@@ -86,6 +86,7 @@
   justify-content: center;
   padding: 50px 20px;
   background-color: #f4f4f4;
+  margin-bottom: 50px;
 }
 
 .service {
@@ -109,18 +110,5 @@
   color: #777;
 }
 
-/* Footer */
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
 
-.footer p {
-  margin: 0;
-  font-size: 1rem;
-}
+
