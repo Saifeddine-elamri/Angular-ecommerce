@@ -1,0 +1,104 @@
+<div class="register-container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control"
+          [class.is-invalid]="submitted && registerForm.get('username')?.hasError"
+          [class.is-valid]="submitted && !registerForm.get('username')?.hasError"
+
+          
+
+        />
+        @if (submitted && registerForm.get('username')?.hasError) {          
+            <div class="invalid-feedback">
+            @if (registerForm.get('username')?.hasError('required')) {          
+                <div>Username is required</div>
+            }
+            @if (registerForm.get('username')?.hasError('minlength')) {          
+                <div>Username must be at least 3 characters</div>
+            }
+            </div>
+            }
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="submitted && registerForm.get('email')?.hasError"
+          [class.is-valid]="submitted && !registerForm.get('email')?.hasError"
+
+        />
+        @if (submitted && registerForm.get('email')?.hasError) {          
+            <div class="invalid-feedback">
+            @if (registerForm.get('email')?.hasError('required')) {          
+                <div>Email is required</div>
+            }
+            @if (registerForm.get('email')?.hasError('email')) {          
+                <div>Email is invalid</div>
+            }
+            </div>
+            }
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="submitted && registerForm.get('password')?.hasError"
+          [class.is-valid]="submitted && !registerForm.get('password')?.hasError"
+
+        />
+        
+        @if (submitted && registerForm.get('password')?.hasError) {          
+        <div class="invalid-feedback">
+        @if (registerForm.get('password')?.hasError('required')) {          
+            <div>Password is required</div>
+        }
+        @if (registerForm.get('password')?.hasError('minlength')) {          
+            <div>Password must be at least 6 characters</div>
+        }
+        </div>
+        }
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          [class.is-invalid]="submitted && registerForm.get('confirmPassword')?.hasError"
+          [class.is-valid]="submitted && !registerForm.get('confirmPassword')?.hasError"
+
+        />
+
+        @if (submitted && registerForm.get('confirmPassword')?.hasError) {          
+            <div class="invalid-feedback">
+            @if (registerForm.get('confirmPassword')?.hasError('required')) {          
+                <div>Confirm Password is required</div>
+            }
+            @if (registerForm.get('confirmPassword')?.hasError('mismatch')) {          
+                <div>Passwords must match</div>
+            }
+            </div>
+            }
+
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+  </div>
+  

@@ -1,35 +1,63 @@
-<div class="menu">
-  <h2>Menu</h2>
 
+  <div class="menu-container">
+     <div class="category-logos">
+      <!-- Affichage des logos des catégories -->
+      @for (category of categories; track category.name)
+      {
+      <div (click)="selectCategory(category.id)"
+           [class.selected]="category.id === selectedCategory"
+           class="category-item">
+        <img [src]="getCategoryLogo(category.id)" [alt]="category.name" class="category-logo" />
+        <p>{{ category.name }}</p>
+      </div>
+      }
+    </div>
+  </div>
+
+
+
+  <div class="menu">
   <!-- Affichage des produits du menu -->
-  <div *ngFor="let product of products" class="menu-item">
+   @for  (product of getFilteredProducts(); track product.name)
+   {
+  <div class="menu-item">
     <div class="product-image-container">
       <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image small-icon">
     </div>
     <div class="product-info">
       <h3 class="product-name">{{ product.name }}</h3>
       <p class="product-price">{{ product.price | currency:'EUR' }}</p>
-      <button (click)="addToCart(product)" class="add-to-cart-btn">Ajouter au panier</button>
+      <button (click)="addToCart(product)" class="add-to-cart-btn">+</button>
     </div>
   </div>
+  }
 
   <!-- Icône du panier avec le nombre d'articles -->
   <div class="cart-icon" (click)="toggleCart()">
     <img src="/cart-icon.png" alt="Panier" class="small-icon" />
-    <span *ngIf="getCartItems().length > 0" class="cart-count">
-      {{ getCartItems().length }}
-    </span>
+    @if (getCartItems().length > 0) {
+      <span class="cart-count">
+        {{ getCartItems().length }}
+      </span>
+    }
+    
   </div>
 
   <!-- Affichage du panier si visible -->
-<div *ngIf="isCartVisible" class="cart-summary">
+  @if (isCartVisible) {
+
+<div class="cart-summary"> 
   <div class="cart-header">
-    <h3>Votre Panier</h3>
-    <button (click)="clearCart()" class="clear-cart-btn">Vider le panier</button>
+    @if (getCartItems().length > 0) {
+      <h3>Votre Panier</h3>
+      <button (click)="clearCart()" class="clear-cart-btn">Vider le panier</button>
+    }
   </div>
 
   <ul class="cart-items">
-    <li *ngFor="let item of getCartItems()" class="cart-item">
+    @for  (item of getCartItems(); track item.name)
+   {
+    <li class="cart-item">
       <div class="item-image">
         <img [src]="item.image" alt="{{ item.name }}" class="cart-item-img">
       </div>
@@ -40,17 +68,31 @@
         <button (click)="removeFromCart(item.id)" class="remove-item-btn">Retirer</button>
       </div>
     </li>
+  }
   </ul>
 
   <div class="cart-footer">
-    <p class="total-price"><strong>Total :</strong> {{ getTotal() | currency:'EUR' }}</p>
-    <button *ngIf="getCartItems().length > 0" routerLink="/checkout" class="checkout-btn">Valider la commande</button>
+    @if (getCartItems().length > 0) {
+      <p class="total-price"><strong>Total :</strong> {{ getTotal() | currency:'EUR' }}</p>
+      <button routerLink="/checkout" class="checkout-btn">Valider la commande</button>
+    }
   </div>
+  @if (getCartItems().length === 0 && isCartVisible) {
+    <div class="empty-cart-message">
+      <p>Votre panier est vide. Ajoutez des articles pour les voir ici.</p>
+    </div>
+  }
 </div>
-
 <!-- Message si le panier est vide -->
-<div *ngIf="getCartItems().length === 0 && isCartVisible" class="empty-cart-message">
-  <p>Votre panier est vide. Ajoutez des articles pour les voir ici.</p>
+  }
 </div>
 
-</div>
+<!-- Bouton de retour en haut -->
+<button
+  class="scroll-to-top"
+  (click)="scrollToTop()"
+  [class.visible]="isScrollButtonVisible"
+  aria-label="Revenir en haut"
+>
+  ↑
+</button>

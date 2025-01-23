@@ -10,7 +10,7 @@ export interface CartItem {
 
 
 @Injectable({
-  providedIn: 'root'  // Ce service est disponible globalement
+  providedIn: 'root'  
 })
 export class CartService {
 

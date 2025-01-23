@@ -1,0 +1,100 @@
+<div class="body html">
+  <div class="container">
+    <!-- Menu latéral -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>Mon Dashboard</h2>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Tableau de bord</a></li>
+          <li><a href="#">Utilisateurs</a></li>
+          <li><a href="#">Ventes</a></li>
+          <li><a href="#">Produits</a></li>
+          <li><a href="#">Paramètres</a></li>
+
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+      <!-- En-tête -->
+      <header>
+        <h1>Bienvenue sur le tableau de bord          <router-outlet></router-outlet>
+        </h1>
+        <div class="user-info">
+          <span>Bienvenue, Admin</span>
+          <button class="logout-btn">Se déconnecter</button>
+        </div>
+      </header>
+
+      <!-- Sections du tableau de bord -->
+      <div class="dashboard">
+
+        <!-- Cartes de statistiques -->
+        <div class="stats-cards">
+          <div class="card">
+            <h3>Utilisateurs</h3>
+            <p class="number">1200</p>
+          </div>
+          <div class="card">
+            <h3>Ventes</h3>
+            <p class="number">350</p>
+          </div>
+          <div class="card">
+            <h3>Revenue</h3>
+            <p class="number">5300</p>
+          </div>
+        </div>
+
+        <!-- Tableaux de données -->
+        <div class="data-tables">
+          <h2>Dernières ventes</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID Vente</th>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#1</td>
+                <td>Produit A</td>
+                <td>15</td>
+                <td>18/01/2025</td>
+              </tr>
+              <tr>
+                <td>#2</td>
+                <td>Produit B</td>
+                <td>30</td>
+                <td>17/01/2025</td>
+              </tr>
+              <tr>
+                <td>#3</td>
+                <td>Produit C</td>
+                <td>20</td>
+                <td>16/01/2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Graphiques (remplaçant par des images ou icônes) -->
+        <div class="charts">
+          <h2>Graphiques de performance</h2>
+          <div class="chart">
+            <img src="assets/images/bar-chart.png" alt="Graphique à barres" />
+          </div>
+          <div class="chart">
+            <img src="assets/images/pie-chart.png" alt="Graphique circulaire" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

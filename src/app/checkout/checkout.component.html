@@ -6,23 +6,27 @@
 	  <div class="order-summary">
 		<h3>Articles dans votre panier</h3>
 		<ul class="order-items-list">
-		  <li *ngFor="let item of cartItems" class="order-item">
-			<div class="item-image">
-			  <img [src]="item.image" alt="{{ item.name }}" />
-			</div>
-			<div class="item-details">
-			  <div class="item-name">
-				<strong>{{ item.name }}</strong>
-			  </div>
-			  <div class="item-quantity">
-				<span>{{ item.quantity }} x </span>
-				<span>{{ item.price }} €</span>
-			  </div>
-			  <div class="item-total">
-				<span>{{ item.price * item.quantity }} €</span>
-			  </div>
-			</div>
-		  </li>
+		@for  (item of cartItems; track item.name)
+		{
+			<li class="order-item">
+				<div class="item-image">
+				  <img [src]="item.image" alt="{{ item.name }}" />
+				</div>
+				<div class="item-details">
+				  <div class="item-name">
+					<strong>{{ item.name }}</strong>
+				  </div>
+				  <div class="item-quantity">
+					<span>{{ item.quantity }} x </span>
+					<span>{{ item.price }} €</span>
+				  </div>
+				  <div class="item-total">
+					<span>{{ item.price * item.quantity }} €</span>
+				  </div>
+				</div>
+			  </li>
+		}
+
 		</ul>
 		<div class="order-total">
 		  <strong>Total : {{ total }} €</strong>
@@ -41,9 +45,12 @@
 	  </div>
   
 	  <!-- Affichage du message de confirmation ou d'erreur -->
-	  <div *ngIf="message" class="message" [ngClass]="{ 'success': message.includes('confirmée'), 'error': message.includes('Erreur') }">
-		{{ message }}
-	  </div>
+	  @if (message) {
+		<div class="message" [ngClass]="{ 'success': message.includes('confirmée'), 'error': message.includes('Erreur') }">
+			{{ message }}
+		  </div>
+	  }
+
 	</div>
   </div>
   

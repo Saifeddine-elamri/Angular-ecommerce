@@ -84,22 +84,74 @@
 
 /* Bouton ajouter au panier */
 .add-to-cart-btn {
-  padding: 8px 15px;
-  font-size: 1em;
-  background-color: #28a745;
+  padding: 12px 25px;
+  font-size: 1.2em;
+  background: linear-gradient(145deg, #28a745, #218838); /* Dégradé de vert */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px; /* Bordures arrondies pour un look moderne */
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  max-width: 180px;  /* Limite la largeur à 180px */
+  transition: all 0.3s ease-in-out;
+  max-width: 240px;  /* Limite la largeur à 240px */
   width: 100%;  /* S'assure que le bouton prend la largeur maximale possible dans son conteneur */
-  margin-top: 10px;  /* Espacement en haut du bouton */
+  margin-top: 20px;  /* Espacement en haut du bouton */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Ombre douce pour donner de la profondeur */
+  text-transform: uppercase; /* Texte en majuscules */
+  letter-spacing: 1px; /* Espacement entre les lettres pour un effet plus moderne */
+  font-weight: bold;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacement entre l'icône et le texte */
 }
 
-.add-to-cart-btn:hover {
-  background-color: #218838;
+.add-to-cart-btn i {
+  font-size: 1.4em;
 }
+
+/* Effet hover */
+.add-to-cart-btn:hover {
+  background: linear-gradient(145deg, #218838, #28a745); /* Inverser le dégradé au survol */
+  transform: translateY(-5px) scale(1.05); /* Légère élévation et agrandissement */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Ombre plus forte */
+  animation: glow 1.5s infinite alternate; /* Ajout d'une animation de lueur */
+}
+
+/* Animation de lueur au survol */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px #28a745, 0 0 20px #28a745;
+  }
+  100% {
+    box-shadow: 0 0 20px #218838, 0 0 30px #218838;
+  }
+}
+
+/* Effet de clic */
+.add-to-cart-btn:active {
+  transform: scale(0.98) translateY(2px); /* Réduit légèrement la taille au clic pour un effet de pression */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #218838, #28a745);
+}
+
+/* Ajouter un effet de focus pour l'accessibilité */
+.add-to-cart-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5); /* Lueur verte autour du bouton */
+}
+
+/* Icône ajoutée au bouton */
+.add-to-cart-btn i {
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+}
+
+/* Animations d'échelle douce */
+.add-to-cart-btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+
 
 /* Icône du panier */
 .cart-icon {
@@ -144,8 +196,8 @@
 /* Style général du panier */
 .cart-summary {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 127px;
+  right: 50px;
   width: 350px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -302,6 +354,129 @@
   .checkout-btn {
     font-size: 1em;
   }
+  .menu
+  {
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .menu-items
+  {
+   width: 400px;
+
+  }
 }
 
 
+/* Style général du menu */
+.menu-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.menu-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Conteneur des logos des catégories */
+.category-logos {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  gap: 25px;
+}
+
+/* Style pour chaque élément de catégorie */
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 50px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+  text-align: center;
+  
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+  background-color: #f1f1f1;
+}
+
+.category-item.selected {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.category-item .category-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.category-item p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+/* Responsivité */
+@media (max-width: 600px) {
+  .menu-container {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .category-item .category-logo {
+    width: 30px;
+    height: 30px;
+
+  }
+
+  .menu-title {
+    font-size: 20px;
+  }
+  .category-logos {
+    flex-direction: column;
+  }
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 130px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #218838;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background-color: #1b6f2d;
+}

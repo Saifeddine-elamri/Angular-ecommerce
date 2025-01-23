@@ -1,0 +1,28 @@
+<p>cookie-manager works!</p>
+<div>
+    <h2>Cookie Manager</h2>
+  
+    <!-- Boutons pour créer, lire et supprimer des cookies -->
+    <button (click)="setCookie('saif', 'saifeddine elamri', 7)">Set Cookie</button>
+    <button (click)="getCookie('saif')">Get Cookie</button>
+    <button (click)="deleteCookie('username')">Delete Cookie</button>
+    <button (click)="setsession('saif', 'saifeddine sessionelamri')">set session</button>
+
+  
+    <!-- Affichage de la valeur du cookie récupéré -->
+     @if (getCookie('saif'))
+     {
+        <div>
+            <p>Cookie "username": {{ getCookie('saif') }}</p>
+          </div>
+     }
+    
+     @if (getCookie('username'))
+     {
+        <div>
+            <p>Cookie "username": {{ getCookie('username') }}</p>
+          </div>
+     }
+    
+  </div>
+  

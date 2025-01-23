@@ -1,7 +1,40 @@
 <nav>
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active">Accueil</a></li>
-    <li><a routerLink="/menu" routerLinkActive="active">Menu</a></li>
-    <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+  <!-- Menu Hamburger -->
+  <div class="sm-menu">
+    <button 
+      class="hamburger" 
+      (click)="toggleMenu()" 
+      aria-label="Menu">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+  </div>
+
+  <!-- Bouton pour fermer le menu (X) -->
+  @if (isMenuOpen) {
+    <button 
+    class="hamburger close-menu"
+    (click)="closeMenu()" 
+    aria-label="Fermer le menu">
+    <i class="fas fa-times"></i>
+  </button>
+  }
+  
+
+  <!-- Navigation Menu -->
+  <ul [class.show]="isMenuOpen" id="navMenu">
+    <li><a routerLink="/" routerLinkActive="active" (click)="closeMenu()">Accueil</a></li>
+    <li><a routerLink="/menu" routerLinkActive="active" (click)="closeMenu()">Menu</a></li>
+    <li><a routerLink="/reservation" routerLinkActive="active" (click)="closeMenu()">Reserver</a></li>
+    <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
+    <!-- Icône d'authentification -->
+    <li><a routerLink="/authentification" routerLinkActive="active" aria-label="Authentification">
+      <i class="fas fa-user-circle"></i>
+    </a></li>
+    <!-- Lien pour s'enregistrer -->
+    <li><a routerLink="/register" routerLinkActive="active" class="register-btn" (click)="closeMenu()">
+      S'inscrire
+    </a></li>
   </ul>
 </nav>

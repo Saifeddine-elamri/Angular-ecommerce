@@ -8,7 +8,6 @@
 
 /* En-tête avec une image de fond */
 .header {
-
   background-size: cover;
   background-position: center;
   height: 400px;
@@ -22,13 +21,13 @@
 }
 
 .header h1 {
-  color:#333;
+  color: #333;
   font-size: 3rem;
   margin: 0;
 }
 
 .header p {
-  color:#333;
+  color: #333;
   font-size: 1.2rem;
   margin-top: 10px;
 }
@@ -84,6 +83,8 @@
 .services {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap; /* Ajout pour s'adapter aux petits écrans */
+  gap: 20px; /* Espacement entre les éléments */
   padding: 50px 20px;
   background-color: #f4f4f4;
   margin-bottom: 50px;
@@ -92,11 +93,11 @@
 .service {
   background-color: #fff;
   padding: 30px;
-  margin: 0 20px;
   border-radius: 8px;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex: 1;
+  flex: 1 1 calc(33.333% - 40px); /* Largeur flexible */
+  max-width: 300px; /* Limite pour les grands écrans */
 }
 
 .service h3 {
@@ -110,5 +111,74 @@
   color: #777;
 }
 
+/* Responsive Styles */
 
+/* Petites tablettes et téléphones */
+@media (max-width: 768px) {
+  .header {
+    height: 300px;
+    padding: 15px;
+  }
 
+  .header h1 {
+    font-size: 2.5rem; /* Réduction du titre */
+  }
+
+  .header p {
+    font-size: 1rem; /* Réduction du sous-titre */
+  }
+
+  .header .btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+
+  .about h2 {
+    font-size: 2rem;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+
+  .services {
+    padding: 30px 15px;
+  }
+
+  .service {
+    flex: 1 1 100%; /* Chaque service prend toute la largeur */
+    max-width: 100%;
+  }
+}
+
+/* Très petits appareils (téléphones) */
+@media (max-width: 480px) {
+  .header {
+    height: 250px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  .header .btn {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+
+  .about h2 {
+    font-size: 1.8rem;
+  }
+
+  .about img {
+    max-width: 300px;
+  }
+
+  .services {
+    gap: 15px; /* Réduction de l'espace entre les services */
+  }
+}

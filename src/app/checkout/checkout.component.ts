@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../cart.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { inject } from '@angular/core';
 
 @Component({
-  selector: 'app-checkout',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+    selector: 'app-checkout',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
   cartItems: CartItem[] = [];
@@ -24,9 +23,10 @@ export class CheckoutComponent implements OnInit {
 
   private apiUrl = 'http://127.0.0.1:8000/api/checkout';
 
+  private http = inject(HttpClient);
+  private cartService = inject(CartService);
 
 
-  constructor(private cartService: CartService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
